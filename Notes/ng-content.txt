@@ -1,0 +1,50 @@
+<ng-content> is an Angular directive used for content projection. It allows you to include content from a parent component into a child component's template. This is particularly useful for creating reusable components that can display different content based on where they are used.
+
+Usage:
+Let's say you have a parent component (ParentComponent) and a child component (ChildComponent), and you want to project content from the parent into the child.
+
+Parent Component Template (parent.component.html):
+
+html
+Copy code
+<app-child>
+  <h2>Content projected from Parent Component</h2>
+  <p>This content will be projected into the Child Component.</p>
+</app-child>
+Child Component Template (child.component.html):
+
+html
+Copy code
+<div class="child-component">
+  <h3>Child Component</h3>
+  <ng-content></ng-content>
+</div>
+Here, <ng-content></ng-content> is a placeholder within the child component where the content from the parent will be projected.
+
+Child Component Class (child.component.ts):
+
+typescript
+Copy code
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-child',
+  templateUrl: './child.component.html'
+})
+export class ChildComponent {}
+When the parent component (<app-parent>) includes the child component (<app-child>), the content within the <app-child> tags in the parent component template will be projected into the <ng-content></ng-content> placeholder in the child component template.
+
+Output:
+When the application runs, the rendered output will look like this:
+
+html
+Copy code
+<!-- Rendered Output -->
+<app-child>
+  <div class="child-component">
+    <h3>Child Component</h3>
+    <h2>Content projected from Parent Component</h2>
+    <p>This content will be projected into the Child Component.</p>
+  </div>
+</app-child>
+The content defined within <app-child> in the parent component will replace the <ng-content></ng-content> tag in the child component when the app is rendered, effectively projecting the content from the parent into the child. This way, the child component can be reused while allowing dynamic content insertion from its parent.

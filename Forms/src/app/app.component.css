@@ -1,0 +1,14 @@
+input.ng-invalid{
+  border: 1px solid red;
+}
+
+/*
+In Angular, when using forms and form validation, the ng-invalid class is dynamically added to form controls that have failed 
+validation based on defined validation rules. For instance, if an input is required but left empty, or if the input doesn't match
+ a specified pattern, the ng-invalid class will be applied to indicate that the input is invalid.
+
+By defining styles for input.ng-invalid, you're customizing how these invalid inputs will visually appear on the webpage, in this
+ case, by giving them a red border. This styling can serve as a visual cue to users that there's an issue with the input that 
+ needs attention
+ 
+ */

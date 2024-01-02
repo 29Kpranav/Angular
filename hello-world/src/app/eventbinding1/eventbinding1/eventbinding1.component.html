@@ -1,0 +1,24 @@
+<p>eventbinding1 works!</p>
+
+<!--syntax
+    (eventname)="eventHandler"
+    eventHandler => it is custom method
+    u can use any html tag
+-->
+
+<button (click)="onClick()">Click</button>
+
+<br><br>
+
+<img src="" alt="" (click)="onImage()">
+
+<!--$event
+    it is special variable given by angular
+    it gives current dom element information(it gives a json object)
+    u can only access he information of dom element
+-->
+
+<br><br>
+<button value="Doller event occur" 
+(click)="onDollerEvent($event)">Doller event variable</button>
+

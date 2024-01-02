@@ -1,0 +1,58 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <form [formGroup]="SignUpForm" (ngSubmit)="onSubmit()">
+        <div formGroupName="UserData">
+        <div class="form-group">
+          <label for="username" class="label">Username</label>
+          <br>
+          <input
+            type="text"
+            id="username"
+            formControlName="username"
+            class="form-control">
+            <br>
+            <span class="help-block"  *ngIf="!SignUpForm.get('UserData.username')?.valid && SignUpForm.get('UserData.username')?.touched"> 
+              <span *ngIf="SignUpForm.get('UserData.username')?.errors?.['nameIsForbidden']">This name is invalid!</span>
+              <span *ngIf="SignUpForm.get('UserData.username')?.errors?.['required']">This field is required!</span>
+              
+            </span>
+        </div>
+        <br>
+        <div class="form-group">
+          <label for="email" class="label">Email</label>
+          <br>
+          <input
+            type="text"
+            id="email"
+            formControlName="email"
+            class="form-control">
+            <br>
+            <span class="help-block"  *ngIf="!SignUpForm.get('UserData.email')?.valid && SignUpForm.get('UserData.email')?.touched">Please enter a valid Email</span>
+        </div>
+      </div>
+        <br>
+        <div class="radio" *ngFor="let gender of genders">
+          <label class="label">
+            <input
+              type="radio"
+              formControlName="gender"
+              [value]="gender">
+              {{ gender }}
+          </label>
+        </div>
+        <br>
+        <div formArrayName="hobbies">
+          <h4 class="label">Your Hobbies</h4>
+          <button id= "onkar" class="btn btn-default" type="button" (click)="onAddHobby()">Add Hobby</button>
+          <div class="form-group" *ngFor="let hobbyControl of getcontrols(); let i = index">
+            <input type="text" [formControlName]="i">
+          </div>
+        </div>
+        <span *ngIf="!SignUpForm.valid && SignUpForm.touched">Please enter a valid Data</span>
+        <br>
+        <button id= "onkar" class="btn btn-primary" type="submit" [disabled]="!SignUpForm.valid">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>

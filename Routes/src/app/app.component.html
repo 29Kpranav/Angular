@@ -1,0 +1,30 @@
+<router-outlet>
+
+<a routerLink="/home" routerLinkActive="active" [routerLinkActiveOptions]="{exact : true}">Home</a>  <!--routerLink-->
+<br>
+<a routerLink="/about" routerLinkActive="active">About</a>
+<br>
+<a routerLink="/contact" routerLinkActive="active">Contact</a>
+<br>
+<a href="#"
+   [routerLink]="['/contact', 5, 'edit']"
+   [queryParams]="{allowEdit: '1'}"
+   fragment="loading"  
+>Hello</a>             <!--we can also add all this in method--> 
+<br>
+<button (click)="getUrl(5)">hello</button>
+</router-outlet>
+<br>
+<hr>
+<button (click)="onClick()">Subject</button>
+<!--instead of adding class for css we can give dynamic css by routerLinkActive
+
+[routerLinkActiveOptions] = "{exact : true}"  to ensure that the active style is applied only to the link that exactly 
+matches the current route. 
+
+useful when you want to style the active link for a specific route and prevent accidental activation of the style for 
+similar routes. It ensures that the active style is applied only when the URL matches the specified route exactly, not 
+partially or as a part of another route.-->
+
+<!--unlike routerLink, navigate method doesnt know on which route you currently are so it works well in some cases of relative path and
+     absolute path -->

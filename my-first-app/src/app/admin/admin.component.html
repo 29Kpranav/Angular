@@ -1,0 +1,9 @@
+<p>Welcome Admin !!</p>
+
+<div class="row">
+    <div class="col-xs-12"  >
+      <app-admin-item *ngFor="let recipeEl of AdminRecipes; let i = index"
+      [recipe]="recipeEl"
+      [index]="i"></app-admin-item>
+    </div>
+  </div>

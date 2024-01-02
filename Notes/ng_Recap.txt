@@ -1,0 +1,59 @@
+Alias-
+Angular, an alias is an alternative or shorthand name assigned to an existing property or directive. Aliases are commonly used in various Angular features to provide alternate names that can be used interchangeably with the original names, enhancing readability or providing more descriptive names for certain functionalities.
+
+Here are a few places where aliases are commonly used in Angular:
+
+@Input and @Output Aliases:
+
+When using @Input and @Output decorators in components to communicate between parent and child components, aliases can be assigned to properties or events.
+For @Input, the alias allows a more descriptive name to be used in the parent component, enhancing readability.
+For @Output, the alias provides a more intuitive event name for the parent component to listen to.
+Directive Aliases:
+
+Directives in Angular can also use aliases to provide an alternative or shorter syntax for their usage in templates.
+For example, structural directives like *ngIf and *ngFor have aliases (ngIf and ngFor) without the asterisk, which can be used interchangeably.
+Template Syntax Aliases:
+
+Angular's template syntax also offers aliases for various properties or events to enhance readability.
+For instance, event binding with (event) can be written as on-event using the on- prefix, providing an alternative syntax for event binding.
+Using aliases in Angular helps in improving code readability, providing more descriptive names, and simplifying the syntax in templates, making the code more intuitive and expressive. Aliases are often used to create a more comfortable and understandable API for developers working with Angular components, directives, and templates.
+
+two directives can't apply on the same html elememnt
+
+can only use ince i project
+
+An attribute directive in Angular is a feature that allows you to change the behavior or appearance of an HTML element by applying it as an attribute. It's used to manipulate the behavior, appearance, or functionality of elements in your Angular templates.
+
+Attribute directives are primarily used to:
+
+Modify the behavior of elements: They can alter the behavior of HTML elements by adding, removing, or manipulating attributes or event listeners.
+
+Change the appearance or style: Attribute directives can dynamically apply styles or classes to elements based on certain conditions or user interactions.
+
+Provide reusable functionality: They encapsulate specific functionality that can be applied to multiple elements across your application, promoting reusability.
+
+Angular provides built-in attribute directives such as ngClass, ngStyle, and ngModel. Additionally, developers can create custom attribute directives to extend the functionality of elements based on specific application requirements.
+
+Here's an example of a custom attribute directive in Angular:
+
+typescript
+Copy code
+import { Directive, ElementRef, Renderer2 } from '@angular/core';
+
+@Directive({
+  selector: '[appCustomDirective]'
+})
+export class CustomDirective {
+  constructor(private elementRef: ElementRef, private renderer: Renderer2) {
+    // Access and manipulate the host element (the element this directive is applied to)
+    this.renderer.setStyle(this.elementRef.nativeElement, 'font-weight', 'bold');
+  }
+}
+In this example:
+
+appCustomDirective is the selector used to apply this directive to an element.
+The ElementRef allows access to the host element.
+The Renderer2 provides methods to manipulate the element safely.
+This custom directive, when applied to an HTML element as an attribute (<div appCustomDirective></div>), will set the font-weight style of the element to bold.
+
+Attribute directives are a powerful aspect of Angular that enables you to create reusable and configurable behaviors for HTML elements within your applicatio

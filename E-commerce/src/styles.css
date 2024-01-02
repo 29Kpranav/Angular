@@ -1,0 +1,18 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+/* styles.css or styles.scss */
+* {
+    margin: 10;
+    padding: 10;
+    box-sizing: border-box;
+  }
+  
+  /* Optionally, set margins for specific elements */
+  body {
+    margin: 20px;
+    margin-left: 5%;
+  }
+  

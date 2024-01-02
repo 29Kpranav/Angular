@@ -1,0 +1,65 @@
+ 
+<div class="container">
+  <div class="row">
+ <form #F="ngForm" (ngSubmit)="submitForm()">     <!--ngform will get access js object created by angular    submitForm(F)-->
+  
+  <div id="user-data" ngModelGroup="userData" #userData="ngModelGroup">
+  <div class="form-group">
+  <label for="username">Username:</label>
+  <br>
+  <input type="text" id="username" ngmodel name="username" [(ngModel)]="defaultUsername">
+  </div>
+  <br><br>
+  <!-- <button (click)="suggestUserName">Suggest a User name</button -->
+  <div class="form-group">
+  <label for="email">Email:</label>
+  <br>
+  <input type="email" id="email" ngModel name="email" required email #email="ngModel">     
+  <!--email: This is a built-in Angular validator applied to the input field, ensuring that the entered value follows the standard email format.-->
+  <span class="help-block" *ngIf="!email.valid && email.touched">  Please enter a valid email</span>
+  </div>
+  <br><br>
+
+  <div class="form-group">
+  <label for="secret">Secret Question:</label>
+  <br>
+  <select id="secret" ngModel name="secret">
+    <option value="" disabled selected>Select a question</option>
+    <!--disabled seleced - prevents that particular option from being selectable.-->
+    <option value="pet">What is your pet's name?</option> 
+    <option value="city">Where were you born?</option>
+  </select>
+  </div>
+  <br><br>
+
+   <div class="radio" *ngFor="let gender of genders">
+    <label>
+      <input type="radio" name="gender" ngModel [value]="gender" required>
+      {{gender}}
+    </label>
+   </div>   
+  <button type="submit" [disabled]="!F.valid">Submit</button>
+  
+  <br><br>
+  <div class="form-group" >
+    <textarea class="form-control" name="questionAnswer" rows="3" [(ngModel)]="answer"></textarea>
+    <br>
+    <p>Your reply : {{ answer }}</p>
+  </div>
+  </div>
+  <p *ngIf="!userData.valid && userData.touched">User Data Invalid !!</p>
+</form>
+</div>
+</div>
+
+<hr>
+<div class="row" *ngIf="submitted">
+  <div class="cols-xs-12">
+    <h3>Your Data:</h3>
+    <p>Username: {{user.username}}</p>
+    <p>Mail: {{user.email}}</p>
+    <p>Secret Question: {{user.secretQuestion}}</p>
+    <p>Answer: {{user.answer}}</p>
+    <p>Gender: {{user.gender}}</p>
+  </div>
+</div>

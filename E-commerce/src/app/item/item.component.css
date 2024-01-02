@@ -1,0 +1,55 @@
+  
+
+.mat-elevation-z8 {
+  width: 80%;
+  margin-top: 2%;
+  margin-left: 10%;
+  border-collapse: collapse;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+  background-color: #fff;
+}
+
+.mat-elevation-z8 th,
+.mat-elevation-z8 td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: left;
+}
+
+.mat-elevation-z8 th {
+  background-color: #f2f2f2;
+}
+
+.mat-elevation-z8 td {
+  background-color: #fff;
+}
+
+.mat-elevation-z8 tr:nth-child(even) td {
+  background-color: #f9f9f9;
+}
+
+.mat-elevation-z8 tr:hover td {
+  background-color: #e6f7ff;
+}
+
+.custom-button {
+  margin-top: 45px;
+  background-color: orange;
+  color: white;
+  text-transform: none; /* Ensure text is not in all-caps */
+  width: 80px; /* Adjust width as needed */
+  margin-left: 10%;
+}
+
+#myInput {
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  width: 30%;
+  font-size: 16px;
+  padding: 12px 20px 12px 40px;
+  border: 1px solid #ddd;
+  margin-bottom: 12px;
+  margin-left: 8px;
+}
+

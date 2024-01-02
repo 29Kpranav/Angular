@@ -1,0 +1,47 @@
+In Angular, you can create and bind to custom events in child components using @Output() decorators. This allows child components to emit events that can be captured and handled by the parent components.
+
+Here's an example:
+
+*Child Component:
+ 
+import { Component, Output, EventEmitter } from '@angular/core';
+
+@Component({
+  selector: 'app-child',
+  template: `
+    <button (click)="sendMessage()">Send Message</button>
+  `
+})
+export class ChildComponent {
+  @Output() messageEvent = new EventEmitter<string>();
+
+  sendMessage() {
+    this.messageEvent.emit('Hello from Child');
+  }
+}
+
+*Parent Component:
+ 
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-parent',
+  template: `
+    <app-child (messageEvent)="receiveMessage($event)"></app-child>
+    <p>Message from Child: {{ receivedMessage }}</p>  // Message from Child: Hello from Child
+  `
+})
+export class ParentComponent {
+  receivedMessage: string;
+
+  receiveMessage(message: string) {
+    this.receivedMessage = message;
+  }
+}
+
+* Explanation:
+
+In the Child Component, an EventEmitter named messageEvent is created using @Output(). The sendMessage() function emits an event with the message 'Hello from Child' when the button is clicked.
+In the Parent Component template, the app-child component is used. The (messageEvent)="receiveMessage($event)" syntax sets up an event listener for the messageEvent emitted by the child component. When the event is triggered, it calls the receiveMessage() function in the parent component and passes the emitted message.
+The receiveMessage($event) function in the Parent Component captures the emitted message from the child and assigns it to the receivedMessage property, which is then displayed in the parent template.
+This mechanism enables communication from child to parent components in Angular by allowing child components to emit events that the parent components can listen for and react to accordingly.

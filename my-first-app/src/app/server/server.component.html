@@ -1,0 +1,58 @@
+<p>server works!</p>
+
+<div app-server>No 1</div>           <!--if i use selector:'[app-server]', we can declare div like this-->
+
+<div class="app-server">No 2</div>   <!--if i use selector:'.app-server', we can declare div like this-->
+
+<p> {{'Server'}} with Id {{ ServerId}} is  {{getServerStatus()}}</p>  <!-- {{string interpolation}} --> 
+
+<input type="text" class="form-control" (input)="onUpdateServerName($event)">  <!--Bindable properties and events-->
+<p>{{serverName}}</p>
+
+<button class="btn btn-primary" [disabled]="!allowNewServer" (click)="onCreateServer()">Add Server</button>  <!-- [Property Binding]  & (event binding)--> 
+
+<input type="text" class="form-control" [(ngModel)]="serverName"> 
+ <!-- Two way Binding [(ngModel)] it will update value of above serverName as well--> 
+
+ <!--to use ng model we should have FormsModule in imports and import in ts file -->
+
+ <p>{{serverName}}</p>
+
+ <button class="btn btn-primary" [disabled]="serverName===''" (click)="serverName = ''"></button>  <!--to check for empty serverName and empty after clicking-->
+
+<p [innerText]="allowNewServer"></p>
+
+<p>{{serverCreationStatus}}</p>
+
+<br><hr>
+
+<!---Directives--->
+
+<input type="text" class="form-control" [(ngModel)]="serverName2"> 
+<button class="btn btn-primary" [disabled]="serverName2===''" (click)="onCreateServer2()">Add Server</button>
+
+<p *ngIf="serverCreated; else noServer">Server was created, server name is {{serverName2}}</p>  <!--using ngIf to output data conditionally-->
+
+<ng-template #noServer>
+    <p>No server was created!</p>
+</ng-template>
+
+<!--Unlike structural directives attribute directives dont add or remove elements. They only change the element they were placed on-->
+
+<p [ngStyle]="{backgroundColor:getColor()}" 
+   [ngClass]="{online: serverStatus == 'online'}"> {{'Server'}} with Id {{ ServerId}} is  {{getServerStatus()}}</p>  <!--background-color-->
+
+<!--ngstyle allow us to dynamically assign a style and ngClass allow us to dynamically add or remove css classes-->
+
+<!-- <app-server *ngFor="let server of servers"></app-server> -->
+
+<br><hr>
+<button class="btn btn-primary" (click)="onToggleDetails()">Display Details</button>
+<p *ngIf="showSecret">Secret Password = tuna</p>
+<div 
+*ngFor="let logItem of log; let i = index"
+[ngStyle]="{backgroundColor: i >= 5 ? 'blue' : 'transparent'}"   
+[ngClass]="{'white-text' : i >= 5}"
+>{{ logItem }}</div>
+
+<!--insteadd of i you can use logItem-->

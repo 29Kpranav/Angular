@@ -1,0 +1,10 @@
+<h2 class="welcome">Qnopy E-commerce !!</h2>
+
+<div class="example-button-row" *ngIf="applicationService.isLoggedIn">
+<button id="button1" mat-button color="primary" routerLinkActive="active" routerLink="/category">Category</button>
+<button id="button1" mat-button color="warn" routerLinkActive="active" routerLink="/item">Item</button>
+</div>
+<div>
+    <router-outlet></router-outlet>
+</div>
+

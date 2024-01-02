@@ -1,0 +1,38 @@
+In Angular, you can assign an alias to a custom property using the @Input decorator. This can be helpful when the name of the property in the child component needs to be different from the name used in the parent component.
+
+Here's an example:
+
+Parent Component:
+typescript
+Copy code
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-parent',
+  template: `
+    <app-child [customPropertyFromParent]="parentData"></app-child>
+  `
+})
+export class ParentComponent {
+  parentData: string = 'Hello from Parent';
+}
+Child Component:
+typescript
+Copy code
+import { Component, Input } from '@angular/core';
+
+@Component({
+  selector: 'app-child',
+  template: `
+    <p>{{ customPropertyInChild }}</p>
+  `
+})
+export class ChildComponent {
+  @Input('customPropertyFromParent') customPropertyInChild: string;
+}
+Explanation:
+In the Parent Component template, the property parentData is passed to the app-child component using [customPropertyFromParent]="parentData".
+In the Child Component, @Input('customPropertyFromParent') assigns the name customPropertyFromParent as an alias for the property passed from the parent. Inside the Child Component, it's referenced as customPropertyInChild.
+This way, even though the parent component uses customPropertyFromParent, within the child component, it's accessed and used as customPropertyInChild.
+
+Assigning an alias helps to maintain clear and meaningful naming conventions between the parent and child components, making the code more readable and maintainable.

@@ -1,0 +1,41 @@
+In Angular, you can bind custom properties using @Input() decorators within a child component. This allows you to pass data from a parent component to a child component.
+
+Here's an example:
+
+* Parent Component:
+Let's say you have a parent component that defines a custom property.
+ 
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-parent',
+  template: `
+    <app-child [customProperty]="parentData"></app-child>
+  `
+})
+export class ParentComponent {
+  parentData: string = 'Hello from Parent';
+}
+
+* Child Component:
+The child component will receive the custom property using @Input()
+
+import { Component, Input } from '@angular/core';
+
+@Component({
+  selector: 'app-child',
+  template: `
+    <p>{{ customProperty }}</p>
+  `
+})
+export class ChildComponent {
+  @Input() customProperty: string;
+}
+
+Explanation:
+
+In the Parent Component template, we use the app-child selector and bind the parentData property to the customProperty of the app-child component using [customProperty]="parentData".
+In the Child Component, @Input() customProperty is used to define the property that will receive the data passed from the parent.
+When the Parent Component is rendered, it will display "Hello from Parent" in the app-child section because of the binding. You can then use this property within the Child Component as needed.
+
+This binding mechanism allows you to pass data from parent components to child components in Angular, facilitating communication between different parts of your application.

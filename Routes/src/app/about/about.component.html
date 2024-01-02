@@ -1,0 +1,13 @@
+<p>about works!</p>
+
+<a [routerLink]="['/about', 10, 'Anna']">Load Anna(10)</a>
+<p>User with Id {{user.id}}</p>
+<p>User with name {{user.name}}</p>
+ 
+<router-outlet>  
+</router-outlet>   
+
+<!--When the application starts and navigates to different routes, 
+Angular loads and displays the corresponding components within this router-outlet.-->
+
+<!-- Output is showing double but if you remove router-output and child routes it will work properly-->

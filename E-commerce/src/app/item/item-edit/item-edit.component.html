@@ -1,0 +1,28 @@
+<p>item-edit works!</p>
+
+
+<form [formGroup]="formGroup" class="example-form" (ngSubmit)="onSubmit()">
+  <mat-form-field>
+  <mat-label>Category</mat-label>
+  <mat-select formControlName="categoryId" required>
+    <mat-option *ngFor="let category of categories" [value]="category.categoryId">
+      {{ category.categoryName }}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="itemName" formControlName="itemName" required>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="price" formControlName="price" required>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Item Status</mat-label>
+    <mat-select formControlName="itemStatus" required>
+      <mat-option value="1">Active</mat-option>
+      <mat-option value="0">Inactive</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <button mat-raised-button color="primary" type="submit">Update</button>
+  <button id="id" type="button" class="btn btn-danger" (click)="onCancel()">Cancel</button>
+</form>
